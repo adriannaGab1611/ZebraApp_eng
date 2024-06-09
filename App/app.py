@@ -66,12 +66,12 @@ def main():
     modelResNet, modelInception = load_models()
 
      # Wikipedia search in sidebar
-    st.sidebar.title("Wyszukiwanie w Wikipedii")
-    search_query = st.sidebar.text_input("Wpisz zapytanie")
+    st.sidebar.title("Searching in Wikipedii")
+    search_query = st.sidebar.text_input("Write keyword")
 
     if search_query:
         try:
-            wikipedia.set_lang("pl")
+            wikipedia.set_lang("en")
             st.sidebar.write(wikipedia.summary(search_query))
         except wikipedia.exceptions.DisambiguationError as e:
             st.sidebar.error(f"Podane zapytanie jest dwuznaczne. Proszę wybrać bardziej konkretny termin.")
