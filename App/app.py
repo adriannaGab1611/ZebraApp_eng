@@ -60,7 +60,7 @@ def display_predictions(pred, model_name):
         cols[1].write(f"{max_prediction * 100:.2f}%")
 
 def main():
-    st.set_page_config(page_title="Klasyfikacja wad rozwojowych Danio rerio")
+    st.set_page_config(page_title="Classification of Danio rerio malformations")
     overview = st.container()
     prediction = st.container()
     modelResNet, modelInception = load_models()
@@ -74,16 +74,16 @@ def main():
             wikipedia.set_lang("en")
             st.sidebar.write(wikipedia.summary(search_query))
         except wikipedia.exceptions.DisambiguationError as e:
-            st.sidebar.error(f"Podane zapytanie jest dwuznaczne. Proszę wybrać bardziej konkretny termin.")
+            st.sidebar.error(f"Wikipedia search is ambiguous.")
         except wikipedia.exceptions.PageError as e:
-            st.sidebar.error(f"Nie znaleziono strony na Wikipedii dla podanego zapytania.")
+            st.sidebar.error(f"Wikipedia search not found.")
 
     with overview:
         # Set title
-        st.title('Klasyfikacja wad rozwojowych Danio rerio')
+        st.title('Classification of Danio rerio malformations')
 
         # Upload file with a label
-        file = st.file_uploader('Wgraj zdjęcie larwy Danio rerio', type=['jpeg', 'jpg', 'png'])
+        file = st.file_uploader('Load Danio rerio image', type=['jpeg', 'jpg', 'png'])
 
         # Display image and classify
         if file is not None:
